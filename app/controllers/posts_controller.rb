@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+
   def new
     @post = Post.new
   end
@@ -7,6 +8,10 @@ class PostsController < ApplicationController
     post = Post.new(post_params)
     post.save
     redirect_to '/top'
+  end
+
+  def index
+    @posts = Post.all
   end
 
   private
