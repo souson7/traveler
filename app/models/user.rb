@@ -13,4 +13,8 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :follower
 
   attachment :profile_image
+
+  # ユーザーをフォローする
+  def follow(user_id)
+    follower.create(followed_id: user_id)
 end
