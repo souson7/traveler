@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to post_path(post.id)
     else
-      render :new, status :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if post.update(post_params)
+    if @post.update(post_params)
       redirect_to post_path(post.id)
     else
       render :edit, status: :unprocessable_entity
