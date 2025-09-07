@@ -11,11 +11,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).reverse_order
   end
 
   def show
     @post = Post.find(params[:id])
+    current_user.read_counts.create(post_id: @post.id)
   end
 
   def edit
